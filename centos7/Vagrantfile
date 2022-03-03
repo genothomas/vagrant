@@ -8,8 +8,9 @@ Vagrant.configure("2") do |config|
   NodeCount = 1
   (1..NodeCount).each do |i|
     config.vm.define "vm0#{i}" do |node|
-      node.vm.box = "centos/7"
+      node.vm.box = "generic/centos7"
       node.vm.box_check_update = false
+      node.vm.box_version = "3.6.8"
       node.vm.hostname = "centosvm0#{i}.local"
       node.vm.network "private_network", ip: "172.16.42.10#{i}"
       node.vm.provider :libvirt do |v|
